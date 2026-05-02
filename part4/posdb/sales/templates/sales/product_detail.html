@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <title>📦 ព័ត៌មានផលិតផល</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+            background: #f0f4f8;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #1a202c;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            background: #ebf8ff;
+            color: #2b6cb0;
+            font-size: 0.9em;
+        }
+
+        .price {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #276749;
+        }
+
+        .stock {
+            color: #555;
+        }
+
+        .low {
+            color: #c53030;
+            font-weight: bold;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #2b6cb0;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <!-- ឈ្មោះផលិតផល -->
+    <h1>{{ product.name }}</h1>
+
+    <!-- ប្រភេទ -->
+    <span class="badge">{{ product.get_category_display }}</span>
+
+    <!-- តម្លៃ -->
+    <p class="price">${{ product.price }}</p>
+
+    <!-- Barcode -->
+    {% if product.barcode %}
+        <p><strong>Barcode:</strong> {{ product.barcode }}</p>
+    {% endif %}
+
+    <!-- ស្តុក -->
+    {% if product.stock < 10 %}
+        <p class="low">⚠️ ស្តុកទាប: {{ product.stock }} នៅសល់</p>
+    {% else %}
+        <p class="stock">ក្នុងស្តុក: {{ product.stock }}</p>
+    {% endif %}
+
+    <!-- ត្រឡប់ក្រោយ -->
+    <a href="/sales/products/" class="back">← ត្រឡប់ទៅបញ្ជីផលិតផល</a>
+
+</div>
+
+</body>
+</html>
