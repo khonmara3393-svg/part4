@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-#syz(0h60m!vw*+adz%!2%t3pijq1ga7^98kzn-xp_1$%(5c6o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['part42.pyyhonanywhere.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -125,3 +125,11 @@ LOGOUT_REDIRECT_URL = '/accounts/login/'   # after logout → back to login page
 # With these settings + the root RedirectView, the full navigation cycle is:
 #   /  →  /accounts/login/  →  (log in)  →  /sales/products/
 #   (log out)  →  /accounts/login/
+
+CSRF _TRUSTED_ORIGINS = [
+    'https://part42.pythonanywhere.com',
+    'http://part42.pythonanywhere.com',
+]
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+    
